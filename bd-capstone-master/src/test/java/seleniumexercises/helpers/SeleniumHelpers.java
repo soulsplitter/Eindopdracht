@@ -48,7 +48,39 @@ public class SeleniumHelpers {
             return false;
         }
     }
+    public void dropitdown(By by, String selectText) {
 
+        try {
+            new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));
+            Select dropDown = new Select(driver.findElement(by));
+            dropDown.selectByVisibleText(selectText);
+        }
+        catch (TimeoutException te) {
+            Assert.fail(String.format("Exception in dropDown(): %s", te.getMessage()));
+        }
+    }
+    public void select(By by, String valueToSelect) {
+
+        try {
+            new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));
+            new Select(driver.findElement(by)).selectByVisibleText(valueToSelect);
+        }
+        catch (TimeoutException te) {
+            Assert.fail(String.format("Exception in select(): %s", by.toString()));
+        }
+    }
+
+    public void selectWithWait(By by, String valueToSelect) {
+
+        try {
+            new WebDriverWait(driver, 10).
+                    until(ExpectedConditions.presenceOfNestedElementLocatedBy(by, By.xpath("//option[text()='"+ valueToSelect +"']")));
+            new Select(driver.findElement(by)).selectByVisibleText(valueToSelect);
+        }
+        catch (TimeoutException te) {
+            Assert.fail(String.format("Exception in selectWithWait(): %s", te.getMessage()));
+        }
+    }
     public String getElementText(By by) {
 
         try {

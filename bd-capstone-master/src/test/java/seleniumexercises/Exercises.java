@@ -36,7 +36,7 @@ public class Exercises {
     public void bookAFlightHappyPath(){
         new HomePage(driver)
                 .load();
-driver.findElement(By.xpath("/html[1]/body[1]/div[4]/div[1]/input[1]")).sendKeys("");
+driver.findElement(By.id("select2-drop")).sendKeys("");
 
 
     }

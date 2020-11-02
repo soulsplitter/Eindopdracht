@@ -37,17 +37,15 @@ public class Hotels {
     }
 
     @Test
-    public void bookAFlightHappyPath(){
+    public void bookAHotelHappyPath(){
         new HomePage(driver)
                 .load();
-driver.findElement(By.xpath("/html[1]/body[1]/div[4]/div[1]/input[1]")).sendKeys("");
-
-
+        driver.findElement(By.xpath("")).click();
     }
 
     @After
     public void stopBrowser() {
 
-        driver.quit();
+        //driver.quit();
     }
 }
