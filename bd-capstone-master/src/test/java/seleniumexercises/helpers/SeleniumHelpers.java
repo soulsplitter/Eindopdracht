@@ -2,6 +2,7 @@ package seleniumexercises.helpers;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -37,7 +38,16 @@ public class SeleniumHelpers {
             Assert.fail(String.format("Exception in sendKeys(): %s", te.getMessage()));
         }
     }
+    public void hitKeys(By by, Keys textToType) {
 
+        try {
+            new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));
+            driver.findElement(by).sendKeys(textToType);
+        }
+        catch (TimeoutException te) {
+            Assert.fail(String.format("Exception in sendKeys(): %s", te.getMessage()));
+        }
+    }
     public boolean isDisplayed(By by) {
 
         try {
@@ -48,7 +58,7 @@ public class SeleniumHelpers {
             return false;
         }
     }
-    public void dropitdown(By by, String selectText) {
+    public void dropItDown(By by, String selectText) {
 
         try {
             new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));

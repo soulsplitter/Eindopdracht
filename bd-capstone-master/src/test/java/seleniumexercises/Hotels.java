@@ -6,14 +6,15 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import seleniumexercises.helpers.SeleniumHelpers;
 import seleniumexercises.pages.HomePage;
-import seleniumexercises.pages.SearchForVisaPage;
-import seleniumexercises.pages.VisaApplicationPage;
+import seleniumexercises.pages.HotelBookingPage;
 
 public class Hotels {
 
     private WebDriver driver;
-
+    //gaat mogelijk nog weg, puur voor oefenen
+    private SeleniumHelpers selenium;
     @Before
     public void startBrowser() {
 
@@ -24,28 +25,21 @@ public class Hotels {
     }
 
     @Test
-    public void applyForVisa() {
-
-        new HomePage(driver)
+    public void searchForAHotelHappyPath(){
+        new HotelBookingPage(driver)
                 .load()
-                .selectMenuItem("Visa");
+                .selectHotelOrCity("London")
+                .setCheckInDate(10,04,2021)
+                .setTheCheckOutDate(14,06,2022)
+                .setAdults(5)
+                .setChildren(5)
+                .hitSearch();
 
-        new SearchForVisaPage(driver)
-                .setCountryOfOriginTo("American Samoa");
-
-        new VisaApplicationPage(driver);
-    }
-
-    @Test
-    public void bookAHotelHappyPath(){
-        new HomePage(driver)
-                .load();
-        driver.findElement(By.xpath("")).click();
     }
 
     @After
     public void stopBrowser() {
 
-        //driver.quit();
+        driver.quit();
     }
 }
