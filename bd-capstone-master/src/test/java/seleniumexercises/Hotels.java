@@ -1,20 +1,21 @@
 package seleniumexercises;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import seleniumexercises.helpers.SeleniumHelpers;
 import seleniumexercises.pages.HomePage;
 import seleniumexercises.pages.HotelBookingPage;
+import seleniumexercises.pages.HotelFilterPage;
 
 public class Hotels {
 
     private WebDriver driver;
-    //gaat mogelijk nog weg, puur voor oefenen
-    private SeleniumHelpers selenium;
     @Before
     public void startBrowser() {
 
@@ -35,11 +36,29 @@ public class Hotels {
                 .setChildren(5)
                 .hitSearch();
 
+
+        WebElement hotelsOverview = driver.findElement(By.xpath("//span[@class='text-primary']"));
+        Assert.assertTrue(hotelsOverview.isDisplayed());
+
+    }
+    @Test
+    public void DefineSearchHotelHappyPath(){
+searchForAHotelHappyPath();
+new HotelFilterPage(driver)
+        .setStarsOneToFive(4)
+        .setPercentageForMinimumPrice(20)
+        .setPercentageForMaximumPrice(300);
+
+
+
+//Assert.assert;
+
+
     }
 
     @After
     public void stopBrowser() {
 
-        driver.quit();
+       // driver.quit();
     }
 }
