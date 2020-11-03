@@ -79,6 +79,6 @@ Assert.assertTrue(filterSearch.isDisplayed());
     @After
     public void stopBrowser() {
 
-       // driver.quit();
+       driver.quit();
     }
 }
