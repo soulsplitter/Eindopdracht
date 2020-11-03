@@ -43,11 +43,31 @@ public class Hotels {
     }
     @Test
     public void DefineSearchHotelHappyPath(){
-searchForAHotelHappyPath();
+        //copy of searchForAHotelHappyPath
+        new HotelBookingPage(driver)
+                .load()
+                .selectHotelOrCity("London")
+                .setCheckInDate(10,04,2021)
+                .setTheCheckOutDate(14,06,2022)
+                .setAdults(5)
+                .setChildren(5)
+                .hitSearch();
 new HotelFilterPage(driver)
         .setStarsOneToFive(4)
-        .setPercentageForMinimumPrice(20)
-        .setPercentageForMaximumPrice(300);
+        .setPercentageForMinimumPrice(2)
+        .setPercentageForMaximumPrice(100)
+        .clickViewMoreHotelAmenities()
+        .clickSwimmingPool()
+        .clickBusinessCenter()
+        .clickShuttleBusService()
+        .clickTypeApartment()
+        .clickSortHighToLow()
+        .clickFilterSearch();
+
+
+WebElement filterSearch = driver.findElement(By.xpath("//p[@class='text-muted post-heading']"));
+Assert.assertTrue(filterSearch.isDisplayed());
+
 
 
 

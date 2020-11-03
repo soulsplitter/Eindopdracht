@@ -20,7 +20,7 @@ public class SeleniumHelpers {
     public void click(By by) {
 
         try {
-            new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(by));
+            new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(by));
             driver.findElement(by).click();
         }
         catch (TimeoutException te) {

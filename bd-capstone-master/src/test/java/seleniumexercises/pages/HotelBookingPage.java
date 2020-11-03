@@ -7,19 +7,19 @@ import seleniumexercises.helpers.SeleniumHelpers;
 
 public class HotelBookingPage {
 
-    private WebDriver driver;
-    private SeleniumHelpers selenium;
-    private By xPathHotelName = By.xpath("//div[@id='hotels']/div//a");
-    private By xPathCheckInDate = By.xpath("//input[@id='checkin']");
-    private By xPathCheckOutDate = By.xpath("//input[@id='checkout']");
-    private By xPathUpAdults = By.xpath("//div[@id='hotels']//div[@class='col o2']//button[contains(@class,'up')]");
-    private By xpathDownAdults = By.xpath("//div[@id='hotels']//div[@class='col o2']//button[contains(@class,'down')]");
-    private By xPathChildren = By.xpath("//div[@id='hotels']//div[@class='col 01']//button[contains(@class,'up')]");
-    private By xPathSearch = By.xpath("//div[@id='hotels']//button[@type='submit']");
+    private final WebDriver driver;
+    private final SeleniumHelpers selenium;
+    private final By xPathHotelName = By.xpath("//div[@id='hotels']/div//a");
+    private final By xPathCheckInDate = By.xpath("//input[@id='checkin']");
+    private final By xPathCheckOutDate = By.xpath("//input[@id='checkout']");
+    private final By xPathUpAdults = By.xpath("//div[@id='hotels']//div[@class='col o2']//button[contains(@class,'up')]");
+    private final By xpathDownAdults = By.xpath("//div[@id='hotels']//div[@class='col o2']//button[contains(@class,'down')]");
+    private final By xPathChildren = By.xpath("//div[@id='hotels']//div[@class='col 01']//button[contains(@class,'up')]");
+    private final By xPathSearch = By.xpath("//div[@id='hotels']//button[@type='submit']");
 
     final String BASE_URL = "http://phptravels.net";
 
-    private By buttonAcceptCookies = By.xpath("//button[text()='Got it!']");
+    private final By buttonAcceptCookies = By.xpath("//button[text()='Got it!']");
 
     public HotelBookingPage(WebDriver driver) {
         this.driver = driver;
