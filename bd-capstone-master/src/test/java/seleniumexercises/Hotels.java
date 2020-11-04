@@ -153,7 +153,7 @@ public class Hotels {
                 .clickSortHighToLow()
                 .clickFilterSearch();
 
-        //deze nog changen
+        //deze nog changenkghjsgshjgs
         WebElement filterSearch = driver.findElement(By.xpath("//p[@class='text-muted post-heading']"));
         Assert.assertTrue(filterSearch.isDisplayed());
     }
