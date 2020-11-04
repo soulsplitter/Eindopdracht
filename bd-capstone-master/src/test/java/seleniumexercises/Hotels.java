@@ -26,54 +26,82 @@ public class Hotels {
     }
 
     @Test
-    public void searchForAHotelHappyPath(){
+    public void searchForAHotelHappyPathMin(){
         new HotelBookingPage(driver)
                 .load()
                 .selectHotelOrCity("London")
                 .setCheckInDate(10,04,2021)
                 .setTheCheckOutDate(14,06,2022)
-                .setAdults(5)
-                .setChildren(5)
+                .setAdults(1)
+                .setChildren(0)
                 .hitSearch();
-
-
         WebElement hotelsOverview = driver.findElement(By.xpath("//span[@class='text-primary']"));
         Assert.assertTrue(hotelsOverview.isDisplayed());
 
     }
     @Test
-    public void DefineSearchHotelHappyPath(){
-        //copy of searchForAHotelHappyPath
+    public void searchForAHotelHappyPathMax(){
         new HotelBookingPage(driver)
                 .load()
                 .selectHotelOrCity("London")
                 .setCheckInDate(10,04,2021)
                 .setTheCheckOutDate(14,06,2022)
-                .setAdults(5)
-                .setChildren(5)
+                .setAdults(100)
+                .setChildren(100)
                 .hitSearch();
-new HotelFilterPage(driver)
-        .setStarsOneToFive(4)
-        .setPercentageForMinimumPrice(2)
-        .setPercentageForMaximumPrice(100)
-        .clickViewMoreHotelAmenities()
-        .clickSwimmingPool()
-        .clickBusinessCenter()
-        .clickShuttleBusService()
-        .clickTypeApartment()
-        .clickSortHighToLow()
-        .clickFilterSearch();
+        WebElement hotelsOverview = driver.findElement(By.xpath("//span[@class='text-primary']"));
+        Assert.assertTrue(hotelsOverview.isDisplayed());
 
-
-WebElement filterSearch = driver.findElement(By.xpath("//p[@class='text-muted post-heading']"));
-Assert.assertTrue(filterSearch.isDisplayed());
-
-
-
-
-//Assert.assert;
-
-
+    }
+    @Test
+    public void DefineSearchHotelHappyPathMin() {
+        //copy of searchForAHotelHappyPath
+        new HotelBookingPage(driver)
+                .load()
+                .selectHotelOrCity("London")
+                .setCheckInDate(10, 04, 2021)
+                .setTheCheckOutDate(14, 06, 2022)
+                .setAdults(1)
+                .setChildren(0)
+                .hitSearch();
+        new HotelFilterPage(driver)
+                .setStarsOneToFive(4)
+                .setPercentageForMinimumPrice(2)
+                .setPercentageForMaximumPrice(100)
+                .clickViewMoreHotelAmenities()
+                .clickSwimmingPool()
+                .clickBusinessCenter()
+                .clickShuttleBusService()
+                .clickTypeApartment()
+                .clickSortHighToLow()
+                .clickFilterSearch();
+        WebElement filterSearch = driver.findElement(By.xpath("//p[@class='text-muted post-heading']"));
+        Assert.assertTrue(filterSearch.isDisplayed());
+    }
+        @Test
+        public void DefineSearchHotelHappyPathMax(){
+            //copy of searchForAHotelHappyPath
+            new HotelBookingPage(driver)
+                    .load()
+                    .selectHotelOrCity("London")
+                    .setCheckInDate(10,04,2021)
+                    .setTheCheckOutDate(14,06,2022)
+                    .setAdults(100)
+                    .setChildren(100)
+                    .hitSearch();
+            new HotelFilterPage(driver)
+                    .setStarsOneToFive(4)
+                    .setPercentageForMinimumPrice(2)
+                    .setPercentageForMaximumPrice(100)
+                    .clickViewMoreHotelAmenities()
+                    .clickSwimmingPool()
+                    .clickBusinessCenter()
+                    .clickShuttleBusService()
+                    .clickTypeApartment()
+                    .clickSortHighToLow()
+                    .clickFilterSearch();
+            WebElement filterSearch = driver.findElement(By.xpath("//p[@class='text-muted post-heading']"));
+            Assert.assertTrue(filterSearch.isDisplayed());
     }
 
     @After
