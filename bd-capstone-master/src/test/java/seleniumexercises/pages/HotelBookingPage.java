@@ -57,13 +57,16 @@ public class HotelBookingPage {
     }
     public HotelBookingPage setChildren (int children){
         int o = 0;
-        do {
-            selenium.click(xPathChildren);
-            o++;
+        if(children != 0) {
+            do {
+                selenium.click(xPathChildren);
+                o++;
 
+            }
+            while (o < children);
         }
-        while ( o < children);
-    return this;}
+        return this;
+    }
 
     public HotelBookingPage setCheckInDate(int day, int month, int year){
         String checkInDate = String.format("%d/%d/%d", day, month, year);
