@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import seleniumexercises.pages.HomePage;
 import seleniumexercises.pages.SearchForVisaPage;
 import seleniumexercises.pages.VisaApplicationPage;
+import seleniumexercises.pages.rentABoatPage;
 
 public class Extras {
 
@@ -31,20 +32,37 @@ public class Extras {
                 .selectMenuItem("Visa");
 
         new SearchForVisaPage(driver)
-                .setCountryOfOriginTo("American Samoa");
+                .setCountryOfOriginTo("American Samoa")
+                .setCountryOfTravelTo("Vietnam")
+                .setDateOfTravelTo("01/12/2020")
+                .submitSearch("Submit");
 
-        new VisaApplicationPage(driver);
+        new VisaApplicationPage(driver)
+                .setFirstName("Tom")
+                .setLastName("Verheijden")
+                .setEmail("ditisprive@gmail.com")
+                .setConfirmEmail("ditisprive@gmail.com")
+                .setContactNumber("0612345678")
+                .submitSearch2("sub")
+                .viewInvoice("View Invoice");
     }
 
     @Test
-    public void bookAFlightHappyPath(){
+    public void rentABoat() throws InterruptedException {
+
         new HomePage(driver)
-                .load();
-driver.findElement(By.xpath("/html[1]/body[1]/div[4]/div[1]/input[1]")).sendKeys("");
+                .load()
+                .selectMenuItem("Boats");
+
+        new rentABoatPage(driver)
+                .setCountryOfRentTo("Dubai, United Arab Emirates")
+                .setBoatType("Jetboat")
+                .setDateTo("01/12/2020");
+        Thread.sleep(5000);
+
 
 
     }
-
     @After
     public void stopBrowser() {
 
