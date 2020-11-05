@@ -9,13 +9,8 @@ public class HotelBookARoomPage {
 
     private final WebDriver driver;
     private final SeleniumHelpers selenium;
-    private final By xPathHotelName = By.xpath("//div[@id='hotels']/div//a");
-    private final By xPathCheckInDate = By.xpath("//input[@id='checkin']");
-    private final By xPathCheckOutDate = By.xpath("//input[@id='checkout']");
-    private final By xPathUpAdults = By.xpath("//div[@id='hotels']//div[@class='col o2']//button[contains(@class,'up')]");
-    private final By xpathDownAdults = By.xpath("//div[@id='hotels']//div[@class='col o2']//button[contains(@class,'down')]");
-    private final By xPathChildren = By.xpath("//div[@id='hotels']//div[@class='col 01']//button[contains(@class,'up')]");
-    private final By xPathSearch = By.xpath("//div[@id='hotels']//button[@type='submit']");
+    private final By clickSelectRoom = By.xpath("//div[@class='custom-control custom-checkbox']/input[@value='17']");
+
 
     final String BASE_URL = "http://phptravels.net";
 
@@ -31,61 +26,8 @@ public class HotelBookARoomPage {
         selenium.click(buttonAcceptCookies);
         return this;
     }
-
-    public HotelBookARoomPage selectMenuItem(String menuItem) {
-        selenium.click(By.linkText(menuItem));
-        return this;
-    }
-    public HotelBookARoomPage selectHotelOrCity(String HotelOrCity) {
-        selenium.click(xPathHotelName);
-        selenium.sendKeys(xPathHotelName, HotelOrCity);
-        selenium.click(By.xpath("//div/span[@class='select2-match']"));
-        return this;
-    }
-    public HotelBookARoomPage setAdults(int amount){
-        int i = 2;
-               if (amount != 1){
-            do {
-                selenium.click(xPathUpAdults);
-                i++;
-
-                }
-            while ( i < amount);}
-
-        else selenium.click(xpathDownAdults);
-        return this;
-    }
-    public HotelBookARoomPage setChildren (int children){
-        int o = 0;
-        if(children != 0) {
-            do {
-                selenium.click(xPathChildren);
-                o++;
-
-            }
-            while (o < children);
-        }
-        return this;
-    }
-
-    public HotelBookARoomPage setCheckInDate(int day, int month, int year){
-        String checkInDate = String.format("%d/%d/%d", day, month, year);
-        selenium.click(xPathCheckInDate);
-        selenium.sendKeys(xPathCheckInDate, (Keys.CONTROL + "a"));
-        selenium.hitKeys(xPathCheckInDate, (Keys.BACK_SPACE));
-        selenium.sendKeys(xPathCheckInDate, checkInDate);
-        return this;
-    }
-    public HotelBookARoomPage setTheCheckOutDate(int day, int month, int year){
-        String checkOutDate = String.format("%d/%d/%d", day, month, year);
-        selenium.click(xPathCheckOutDate);
-        selenium.sendKeys(xPathCheckOutDate, (Keys.CONTROL + "a"));
-        selenium.hitKeys(xPathCheckOutDate, (Keys.BACK_SPACE));
-        selenium.sendKeys(xPathCheckOutDate, checkOutDate);
-        return this;
-    }
-    public HotelBookARoomPage hitSearch(){
-        selenium.click(xPathSearch);
+    public HotelBookARoomPage clickSelectRoom(){
+        selenium.click(clickSelectRoom);
         return this;
     }
     }

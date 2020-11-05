@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import seleniumexercises.helpers.SeleniumHelpers;
 import seleniumexercises.pages.HomePage;
+import seleniumexercises.pages.HotelBookARoomPage;
 import seleniumexercises.pages.HotelBookingPage;
 import seleniumexercises.pages.HotelFilterPage;
 
@@ -88,11 +89,13 @@ public class Hotels {
                 .clickDetailsPage();
         WebElement detailsPage = driver.findElement(By.xpath("//div[@class='custom-control custom-checkbox']"));
         Assert.assertTrue(detailsPage.isDisplayed());
+        new HotelBookARoomPage(driver)
+        .clickSelectRoom();
     }
 
     @After
     public void stopBrowser() {
 
-       driver.quit();
+       //driver.quit();
     }
 }
