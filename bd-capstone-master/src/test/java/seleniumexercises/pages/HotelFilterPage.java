@@ -48,13 +48,20 @@ public class HotelFilterPage {
     private final By sortHighToLow = By.xpath("//label[@for='priceOrderDes']");
     private final By sortLowToHigh = By.xpath("//label[@for='priceOrderAsc']");
     private final By filterSearch = By.xpath("//button[@id='searchform']");
+    private final By nameHotelLink = By.xpath("//div[@class='product-long-item-wrapper']/div[1]//a[contains(text(),'Details')]");
 
-
-    private final By buttonAcceptCookies = By.xpath("//button[text()='Got it!']");
+    private final By buttonAcceptCookiesFilter = By.xpath("//button[text()='Got it!']");
+        final String BASE_URL = "https://phptravels.net/hotels/search/united-kingdom/london/10-4-2021/14-6-2022/1/0/0/15-1200/0/0";
 
     public HotelFilterPage(WebDriver driver) {
         this.driver = driver;
         selenium = new SeleniumHelpers(driver);
+    }
+
+    public HotelFilterPage load() {
+        driver.get(BASE_URL);
+        selenium.click(buttonAcceptCookiesFilter);
+        return this;
     }
 
     public HotelFilterPage setStarsOneToFive(int stars) {
@@ -271,6 +278,12 @@ public class HotelFilterPage {
     //en natuurlijk op SEARCH drukken
     public HotelFilterPage clickFilterSearch() {
         selenium.click(filterSearch);
+        return this;
+    }
+
+    //en klikken op de eerste hit
+    public HotelFilterPage clickDetailsPage(){
+        selenium.click(nameHotelLink);
         return this;
     }
 }
