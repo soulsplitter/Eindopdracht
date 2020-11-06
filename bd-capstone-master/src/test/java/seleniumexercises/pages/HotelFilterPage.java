@@ -100,7 +100,7 @@ public class HotelFilterPage {
                 .perform();
         return this;
     }
-
+//moet nog aan gewerkt worden. Het werkt en doet wat ik ongeveer wil, maar niet exact wat ik wil.
     public HotelFilterPage setPercentageForMaximumPrice(int percentageMax) {
         WebElement priceSliderMax =
                 driver.findElement(setPercentageMax);

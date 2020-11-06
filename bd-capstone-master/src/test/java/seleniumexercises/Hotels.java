@@ -96,6 +96,6 @@ public class Hotels {
     @After
     public void stopBrowser() {
 
-       //driver.quit();
+       driver.quit();
     }
 }
