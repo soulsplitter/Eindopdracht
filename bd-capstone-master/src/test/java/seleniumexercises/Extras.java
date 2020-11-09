@@ -1,15 +1,14 @@
 package seleniumexercises;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import seleniumexercises.pages.HomePage;
-import seleniumexercises.pages.SearchForVisaPage;
-import seleniumexercises.pages.VisaApplicationPage;
-import seleniumexercises.pages.rentABoatPage;
+import seleniumexercises.pages.*;
 
 public class Extras {
 
@@ -34,7 +33,8 @@ public class Extras {
         new SearchForVisaPage(driver)
                 .setCountryOfOriginTo("American Samoa")
                 .setCountryOfTravelTo("Vietnam")
-                .setDateOfTravelTo("01/12/2020")
+                //.setDateOfTravelTo("01/12/2020")
+                .setDateOfTravelToCurrent()
                 .submitSearch("Submit");
 
         new VisaApplicationPage(driver)
@@ -43,7 +43,12 @@ public class Extras {
                 .setEmail("ditisprive@gmail.com")
                 .setConfirmEmail("ditisprive@gmail.com")
                 .setContactNumber("0612345678")
-                .submitSearch2("sub")
+                .submitSearch2("sub");
+
+
+        new VerifyVisaApplicationPage(driver)
+
+
                 .viewInvoice("View Invoice");
     }
 

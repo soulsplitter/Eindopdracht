@@ -36,14 +36,21 @@ public class SearchForVisaPage {
         selenium.click(By.xpath(String.format("//em[contains(text(),'%s')]", travelToCountry)));
         return this;
     }
-
     public SearchForVisaPage setDateOfTravelTo(String DateOfTravel) {
 
+       selenium.click(textfieldDate);
+       selenium.sendKeys(textfieldDate, DateOfTravel);
+       selenium.click(By.xpath("//input[@id='']"));
+       return this;
+   }
+
+    public SearchForVisaPage setDateOfTravelToCurrent() {
         selenium.click(textfieldDate);
-        selenium.sendKeys(textfieldDate, DateOfTravel);
+        selenium.WatchFromDate();
         selenium.click(By.xpath("//input[@id='']"));
         return this;
     }
+
 
     public SearchForVisaPage submitSearch(String SearchSubmit) {
         selenium.click(buttonSubmit);

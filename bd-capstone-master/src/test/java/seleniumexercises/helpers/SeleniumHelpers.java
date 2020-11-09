@@ -9,6 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class SeleniumHelpers {
 
     private WebDriver driver;
@@ -96,9 +101,15 @@ public class SeleniumHelpers {
         try {
             new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(by));
             return driver.findElement(by).getText();
-        }
-        catch (TimeoutException te) {
+        } catch (TimeoutException te) {
             return "Element not found";
         }
     }
-}
+
+    public void WatchFromDate(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        driver.findElement(By.name("date")).sendKeys(dtf.format(localDate));
+    }
+    }
+

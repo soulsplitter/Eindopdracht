@@ -15,8 +15,7 @@ public class VisaApplicationPage {
     private By textfieldConfirmEmail = By.name("confirmemail");
     private By textfieldContactNumber = By.name("phone");
     private By ButtonSubmit2 = By.xpath("//button[@id='sub']");
-    private By buttonViewInvoice = By.xpath("//a[contains(text(),'View Invoice')]");
-    private By reservationNumber = By.xpath("//strong[contains(text(),'%s')]");
+    //private By reservationNumber = By.xpath("//strong[contains(text(),'%s')]");
 
     public VisaApplicationPage(WebDriver driver) {
         this.driver = driver;
@@ -54,10 +53,7 @@ public class VisaApplicationPage {
         return this;
     }
 
-    public VisaApplicationPage viewInvoice(String InvoiceView) {
-        selenium.click(buttonViewInvoice);
-        return this;
-    }
+
 
 
 }

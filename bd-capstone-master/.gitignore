@@ -25,7 +25,7 @@ local.properties
 .recommenders
 .classpath
 .project
-
+.idea
 # TestNG reporting
 test-output/
 
